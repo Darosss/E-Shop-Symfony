@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+
+    <form action="{{ path('app_logout') }}" method="post" id="login-form">
+        <button type="submit">logout</button> 
+    </form>
+
+{% endblock %}
