@@ -1,0 +1,16 @@
+<h1>Hi! Please confirm your email!</h1>
+
+<p>
+    Please confirm your email address by clicking the following link: <br><br>
+    <a href="{{ signedUrl|raw }}">Confirm my Email</a>.
+    This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    This message was sent from EShopSymfony web, because you registered in site.
+    If you didn't register - ignore this message or report unrecognized register to support
+</p>
+
+<p>
+    Cheers!
+</p>

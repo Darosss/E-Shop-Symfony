@@ -1,0 +1,29 @@
+#register-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#register-form div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#register-form input,
+#register-form select,
+#register-form button {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    340deg,
+    rgb(89, 78, 247) 0%,
+    rgba(38, 97, 180, 0.8) 59%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+#register-form input:hover,
+#register-form select:hover,
+#register-form button:hover {
+  opacity: 0.8;
+}
