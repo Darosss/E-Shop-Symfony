@@ -10,3 +10,25 @@ body {
     rgba(0, 212, 255, 1) 100%
   );
 }
+
+input,
+select,
+button {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    340deg,
+    rgb(89, 78, 247) 0%,
+    rgba(38, 97, 180, 0.8) 59%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+input:hover,
+select:hover,
+button:hover {
+  opacity: 0.8;
+}
+
+.form-error {
+  color: red;
+}
