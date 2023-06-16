@@ -25,6 +25,7 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
 
         $menu->setChildrenAttribute("id", "menu-wrapper");
+        $menu->addChild('Home', ['route' => 'app_home']);
 
         if($this->security->isGranted('IS_AUTHENTICATED_FULLY')){
             $menu->addChild('Profile', ['route' => 'app_profile']);
@@ -40,6 +41,8 @@ class MenuBuilder
             $menu->addChild('Login', ['route' => 'app_login']);
             $menu->addChild('Register', ['route' => 'app_register']);
         }
+
+      
         return $menu;
     }
 
