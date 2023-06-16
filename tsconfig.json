@@ -1,0 +1,11 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": ["dom", "es2015", "es2016"],
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules"]
+}

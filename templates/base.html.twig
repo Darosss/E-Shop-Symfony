@@ -6,6 +6,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
          <link href={{asset("css/menu.css")}} rel="stylesheet" />
          <link href={{asset("css/registration.css")}} rel="stylesheet" />
          <link href={{asset("css/base.css")}} rel="stylesheet" />
@@ -14,10 +15,24 @@
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
         {{ knp_menu_render("main",{'allow_safe_labels': true})}}
+
+
+
+    <div {{ react_component('TestXD')}}>
+            x Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    </div>
+
+      <div {{ react_component('MyComponent', { 'fullName': 32 }) }}>
+        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    </div>
+
+    
+    
         {% block body %}
         {% endblock %}
     </body>
