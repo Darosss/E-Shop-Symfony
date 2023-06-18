@@ -5,9 +5,8 @@
 {% block body %}
 <div class="home-wrapper">
     <h1>E-ShopSymfony </h1>
-    Welcome again, {{name}}
-    <div class="home-content">
-    //TODO: Add home page
+    <div {{ react_component('home/Home', { 'name': name }) }}>
+        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
     </div>
 
 
