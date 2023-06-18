@@ -3,7 +3,7 @@
 {% block title %}Products list{% endblock %}
 
 {% block body %}
-    <div {{ react_component('products/Products', { 'products':  products }) }}>
+    <div {{ react_component('products/Products', { 'products':  products, "admin": admin }) }}>
         Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
     </div>
 </div>
