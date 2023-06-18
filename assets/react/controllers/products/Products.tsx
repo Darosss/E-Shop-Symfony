@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 interface Category {
   id: number;
   name: string;
@@ -21,13 +21,27 @@ interface Product {
   updatedAt: Date;
 }
 
-export default function ({ products }: { products: string }) {
+export default function ({
+  products,
+  admin,
+}: {
+  products: string;
+  admin: boolean;
+}) {
   const productsParsed = JSON.parse(products) as Product[];
+
+  const [showAdminOptions, setShowAdminOptions] = useState<boolean>(false);
+  //TODO: add later to local storage
 
   return (
     <>
       <h1>Products</h1>
-
+      {admin ? (
+        <button onClick={() => setShowAdminOptions(!showAdminOptions)}>
+          Toggle admin options
+        </button>
+      ) : null}
+      {showAdminOptions ? <button>Add new </button> : null}
       <div className="products-list-wrapper">
         {productsParsed.map((product, idx) => {
           return (
@@ -45,6 +59,13 @@ export default function ({ products }: { products: string }) {
                 />
               </div>
               <div className="product-details">
+                {showAdminOptions ? (
+                  <div>
+                    <button>Edit</button> {/*Add later edit on click */}
+                    <button>Remove</button>
+                    {/*Add later remove on click */}
+                  </div>
+                ) : null}
                 <div>{product.name}</div>
                 <div>{product.brand}</div>
                 <div>Price: {product.price}</div>
