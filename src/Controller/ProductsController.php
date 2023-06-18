@@ -29,7 +29,7 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/products', name: 'app_products', methods:["GET"]) ]
-    public function index(ProductsRepository $productsRepository, NormalizerInterface $normalizerInterface): Response
+    public function index(NormalizerInterface $normalizerInterface): Response
     {
         $encoder = new JsonEncoder();
         $defaultContext = [
@@ -44,7 +44,7 @@ class ProductsController extends AbstractController
         $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
 
         $serializer = new Serializer([$normalizer], [$encoder]);
-        $products = $serializer->serialize($productsRepository->findAll(), 'json');
+        $products = $serializer->serialize($this->productsRepository->findAll(), 'json');
         
         return $this->render('products/index.html.twig', array(
             'products' =>$products
