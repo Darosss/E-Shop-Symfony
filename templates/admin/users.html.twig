@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Users!{% endblock %}
+
+{% block body %}
+Users
+    <div {{ react_component('admin/Users', { 'name': 'xd' }) }}>
+        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    </div>
+{% endblock %}
