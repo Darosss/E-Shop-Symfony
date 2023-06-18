@@ -26,9 +26,13 @@ class MenuBuilder
 
         $menu->setChildrenAttribute("id", "menu-wrapper");
         $menu->addChild('Home', ['route' => 'app_home']);
+        $menu->addChild('Products', ['route' => 'app_products']);
 
         if($this->security->isGranted('IS_AUTHENTICATED_FULLY')){
             $menu->addChild('Profile', ['route' => 'app_profile']);
+            //TODO: add categories
+            //TODO: add create product?
+            //TODO: add submenus
             $menu->addChild('Logout')
             ->setUri('#')
             ->setAttribute('class', 'logout-link')
