@@ -1,2 +1,15 @@
+@import "./home.scss", "./products.scss";
+
 body {
+  font-size: 2vmin;
+}
+
+button {
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 3px blue;
+}
+
+button:active {
+  filter: hue-rotate(-45deg);
 }
