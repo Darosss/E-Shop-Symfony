@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products list{% endblock %}
+
+{% block body %}
+    <div {{ react_component('products/Products', { 'products':  products }) }}>
+        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    </div>
+</div>
+{% endblock %}
+
+
