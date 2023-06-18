@@ -20,19 +20,6 @@
     </head>
     <body>
         {{ knp_menu_render("main",{'allow_safe_labels': true})}}
-
-
-
-    <div {{ react_component('TestXD')}}>
-            x Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
-    </div>
-
-      <div {{ react_component('MyComponent', { 'fullName': 32 }) }}>
-        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
-    </div>
-
-    
-    
         {% block body %}
         {% endblock %}
     </body>
