@@ -7,6 +7,7 @@ use App\Helpers\DateSerializer;
 use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,8 +22,9 @@ class ProductsController extends AbstractController
     private $dateSerializer;
     private $productsRepository;
     private $categoriesRepository;
-    public function __construct(DateSerializer $dateSerializer, ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository)
-    {
+    private $security;
+    public function __construct(Security $security, DateSerializer $dateSerializer, ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository)
+    {   $this->security = $security;
         $this->dateSerializer = $dateSerializer;
         $this->productsRepository = $productsRepository;
         $this->categoriesRepository = $categoriesRepository;
@@ -31,6 +33,7 @@ class ProductsController extends AbstractController
     #[Route('/products', name: 'app_products', methods:["GET"]) ]
     public function index(NormalizerInterface $normalizerInterface): Response
     {
+        $admin = $this->security->isGranted("ROLE_ADMIN") || $this->security->isGranted("ROLE_SUPER_ADMIN");
         $encoder = new JsonEncoder();
         $defaultContext = [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
@@ -47,7 +50,8 @@ class ProductsController extends AbstractController
         $products = $serializer->serialize($this->productsRepository->findAll(), 'json');
         
         return $this->render('products/index.html.twig', array(
-            'products' =>$products
+            'products' =>$products,
+            'admin' => $admin
         ));
 
         
