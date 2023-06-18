@@ -28,11 +28,13 @@ class MenuBuilder
         $menu->addChild('Home', ['route' => 'app_home']);
         $menu->addChild('Products', ['route' => 'app_products']);
 
+        if($this->security->isGranted("ROLE_SUPER_ADMIN") || $this->security->isGranted("ROLE_ADMIN")){
+            $admin_menu = $this->createAdminMenu($options);
+            $menu->addChild($admin_menu)->setAttribute("class", "main-admin-menu");
+        }
+
         if($this->security->isGranted('IS_AUTHENTICATED_FULLY')){
             $menu->addChild('Profile', ['route' => 'app_profile']);
-            //TODO: add categories
-            //TODO: add create product?
-            //TODO: add submenus
             $menu->addChild('Logout')
             ->setUri('#')
             ->setAttribute('class', 'logout-link')
@@ -48,6 +50,25 @@ class MenuBuilder
 
       
         return $menu;
+    }
+
+    public function createAdminMenu(array $options):ItemInterface
+    {
+        $admin_menu = $this->factory->createItem("Admin menu", ["uri"=>"#"]);
+        $admin_menu->setChildrenAttribute("class", "admin-menu-wrapper");
+        if (isset($options['class'])) {
+            $admin_menu->setChildrenAttribute("class", "admin-menu-wrapper ".$options["class"]);
+        }
+        
+        if($this->security->isGranted("ROLE_SUPER_ADMIN")){
+            $admin_menu->addChild("Users", ["route"=> "app_admin_users"]);
+            $admin_menu->addChild("Roles", ["route"=> "app_admin_roles"]);
+        }
+
+        $admin_menu->addChild("Soon");
+        $admin_menu->addChild("Soon2");
+
+        return $admin_menu;
     }
 
 }
