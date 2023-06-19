@@ -49,9 +49,14 @@ class ProductsController extends AbstractController
         $serializer = new Serializer([$normalizer], [$encoder]);
         $products = $serializer->serialize($this->productsRepository->findAll(), 'json');
         
+        if($admin) {
+            $categories = $serializer->serialize($this->categoriesRepository->findAll(), 'json');
+       
+        }
         return $this->render('products/index.html.twig', array(
             'products' =>$products,
-            'admin' => $admin
+            'admin' => $admin,
+            "categories"=>$categories
         ));
 
         
