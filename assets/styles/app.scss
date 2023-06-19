@@ -1,4 +1,4 @@
-@import "./home.scss", "./products.scss";
+@import "./home.scss", "./products.scss", "./modal.scss";
 
 body {
   font-size: 2vmin;
@@ -8,8 +8,17 @@ button {
   border: 0;
   border-radius: 0.5rem;
   box-shadow: 3px 3px 3px blue;
+  padding: 0.5rem;
 }
 
 button:active {
   filter: hue-rotate(-45deg);
+}
+
+input {
+  border-radius: 0.5rem;
+  border: 0;
+  padding: 0.5rem;
+  font-weight: 800;
+  border: 1px solid gray;
 }
