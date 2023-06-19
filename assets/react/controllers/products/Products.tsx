@@ -1,35 +1,18 @@
 import React, { useState } from "react";
-interface Category {
-  id: number;
-  name: string;
-  description: string;
-  parent: Category;
-  children: Category[];
-  products: Product;
-}
-
-interface Product {
-  id: number;
-  name: string;
-  description?: string;
-  price: number;
-  quantity: number;
-  category: Category;
-  brand: string;
-  image: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import CreateProduct from "./CreateProduct";
+import { Category, Product } from "../types";
 
 export default function ({
   products,
   admin,
+  categories,
 }: {
   products: string;
   admin: boolean;
+  categories: string;
 }) {
   const productsParsed = JSON.parse(products) as Product[];
-
+  const categoriesParsed = JSON.parse(categories) as Category[];
   const [showAdminOptions, setShowAdminOptions] = useState<boolean>(false);
   //TODO: add later to local storage
 
@@ -41,7 +24,10 @@ export default function ({
           Toggle admin options
         </button>
       ) : null}
-      {showAdminOptions ? <button>Add new </button> : null}
+      {showAdminOptions ? (
+        <CreateProduct categories={categoriesParsed} />
+      ) : null}
+
       <div className="products-list-wrapper">
         {productsParsed.map((product, idx) => {
           return (
@@ -61,9 +47,9 @@ export default function ({
               <div className="product-details">
                 {showAdminOptions ? (
                   <div>
-                    <button>Edit</button> {/*Add later edit on click */}
+                    <button>Edit</button> {/*TODO:Add later edit on click */}
                     <button>Remove</button>
-                    {/*Add later remove on click */}
+                    {/*TODO:Add later remove on click */}
                   </div>
                 ) : null}
                 <div>{product.name}</div>
