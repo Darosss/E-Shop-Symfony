@@ -1,7 +1,8 @@
 .products-list-wrapper {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
+  height: 70vh;
+  overflow-x: hidden;
 
   .sold-out {
     filter: grayscale(1);
@@ -37,5 +38,22 @@
       text-align: left;
       margin-left: 0.5vw;
     }
+  }
+}
+
+.create-product-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    width: 50%;
+  }
+  * {
+    margin: 0.1rem;
+  }
+  span {
+    color: red;
   }
 }
